@@ -1,4 +1,4 @@
-function [dX] = EOMs(t,X,vehicle_const,downburst_const)
+function [dX] = EOMs(~,X,vehicle_const,downburst_const)
     rm=downburst_const(1);
     zm=downburst_const(2);
     lambda=downburst_const(3);
@@ -36,25 +36,9 @@ function [dX] = EOMs(t,X,vehicle_const,downburst_const)
 
     end
     a=(Fdrag+Fgrav+Fb)./m;
-    % Fam=rho*g*Vol*a;
-    % a=(Fdrag+Fgrav+Fb+Fam)./m;
+    Fam=rho*g*Vol*a;
+    a=(Fdrag+Fgrav+Fb+Fam)./m;
     dX=[vx,vy,vz,a(1),a(2),a(3)]';
-
-    % if t>6
-    %     t
-    %     Fdrag
-    %     Fb
-    %     Fgrav
-    %     wind
-    %     Air_rel_vel
-    %     test=1;
-    % end
-
-
-
-
-
-
 end
 
 function Cd=calc_Cd(Re)
